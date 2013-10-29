@@ -1,0 +1,232 @@
+<html>
+<head>
+  <style>
+    #input-box {
+      float:left;
+      margin:10px;
+    }
+    .keys {
+      float: left;
+      margin: 10px;
+    }
+  </style>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript">
+  keys = {8:0, 9:0, 13:0, 16:0, 17:0, 18:0, 20:0, 27:0, 32:0, 48:0, 49:0, 50:0, 51:0, 52:0, 53:0, 54:0, 55:0, 56:0,
+          57:0}
+  var count = 0;
+
+  function keyCount(metakey) {
+    //needs if statement, if keys has metakey key
+    keys[metakey]++;
+    count ++;
+    $('#count').html(count);
+
+    switch(metakey) {
+      case 8:
+        $('#delete').html(keys[metakey]);
+        break;
+      case 9:
+        $('#tab').html(keys[metakey]);
+        break;
+      case 13:
+        $('#return').html(keys[metakey]);
+        break;
+      case 16:
+        $('#shift').html(keys[metakey]);
+        break;
+      case 17:
+        $('#control').html(keys[metakey]);
+        break;
+      case 18:
+        $('#option').html(keys[metakey]);
+        break;
+      case 20:
+        $('#caps').html(keys[metakey]);
+        break;
+      case 27:
+        $('#escape').html(keys[metakey]);
+        break;
+      case 32:
+        $('#space').html(keys[metakey]);
+        break;
+      case 48:
+        $('#zero').html(keys[metakey]);
+        break;
+      case 49:
+        $('#one').html(keys[metakey]);
+        break;
+      case 50:
+        $('#two').html(keys[metakey]);
+        break;
+      case 51:
+        $('#three').html(keys[metakey]);
+        break;
+      case 52:
+        $('#four').html(keys[metakey]);
+        break;
+      case 53:
+        $('#five').html(keys[metakey]);
+        break;
+      case 54:
+        $('#six').html(keys[metakey]);
+        break;
+      case 55:
+        $('#seven').html(keys[metakey]);
+        break;
+      case 56:
+        $('#eight').html(keys[metakey]);
+        break;
+      case 57:
+        $('#nine').html(keys[metakey]);
+        break;
+      default:
+        console.log("unknown key: " + metakey);
+        break;
+    }
+  }
+
+  $(document).ready(function() {
+    $('#input-box').keypress(function (event) {
+      // && (event.which <= 126
+      if ((event.which > 32)) {
+        // $('#letters').append("PRESS code: " + event.which + " letter: " + String.fromCharCode(event.which) + "<br>");
+        keyCount(event.which);
+      }
+    });
+
+    $('#input-box').keydown(function (event) {
+      //removed || (event.which > 126)
+      if ((event.which <= 32)) {
+        // $('#letters').append("DOWN code: " + event.which + " letter: " + giveMetakey(event.which) + "<br>");
+        keyCount(event.which);
+      }
+    });
+  });
+  </script>
+</head>  
+<body>
+  <textarea id='input-box' cols=50 rows=25></textarea>
+  <div class="keys" id="total">
+    <b>Total keys:</b> <span id="count">0</span><br>
+  </div>
+  <div class="keys" id="metakeys">
+    <b>Metakeys</b> <br>
+    Delete: <span id="delete">0</span><br>
+    Tab: <span id="tab">0</span><br>
+    Return: <span id="return">0</span><br>
+    Shift: <span id="shift">0</span><br>
+    Control: <span id="control">0</span><br>
+    Option: <span id="option">0</span><br>
+    Caps Lock: <span id="caps">0</span><br>
+    Escape: <span id="escape">0</span><br>
+    Space: <span id="space">0</span><br>
+  </div>
+  <div class="keys" id="numbers">
+    <b>Numbers</b><br>
+    0: <span id="zero">0</span><br>
+    1: <span id="one">0</span><br>
+    2: <span id="two">0</span><br>
+    3: <span id="three">0</span><br>
+    4: <span id="four">0</span><br>
+    5: <span id="five">0</span><br>
+    6: <span id="six">0</span><br>
+    7: <span id="seven">0</span><br>
+    8: <span id="eight">0</span><br>
+    9: <span id="nine">0</span><br>
+  </div>
+  <div class="keys" id="punctuation">
+    <b>Punctuation</b><br>
+    `: <span id="accent">0</span><br>
+    ~: <span id="tilde">0</span><br>
+    !: <span id="exclamation">0</span><br>
+    @: <span id="at">0</span><br>
+    #: <span id="hash">0</span><br>
+    $: <span id="dollar">0</span><br>
+    %: <span id="mod">0</span><br>
+    ^: <span id="carrot">0</span><br>
+    &: <span id="amp">0</span><br>
+    *: <span id="star">0</span><br>
+    (: <span id="paren1">0</span><br>
+    ): <span id="paren2">0</span><br>
+    -: <span id="dash">0</span><br>
+    _: <span id="underscore">0</span><br>
+    +: <span id="plus">0</span><br>
+    =: <span id="equals">0</span><br>
+    [: <span id="bracket1">0</span><br>
+    ]: <span id="bracket2">0</span><br>
+    {: <span id="curly1">0</span><br>
+    }: <span id="curly2">0</span><br>
+    \: <span id="backslash">0</span><br>
+    |: <span id="bar">0</span><br>
+    ": <span id="quotes">0</span><br>
+    ': <span id="quote">0</span><br>
+    :: <span id="colon">0</span><br>
+    ;: <span id="semicolon">0</span><br>
+    ?: <span id="question">0</span><br>
+    /: <span id="fwdslash">0</span><br>
+    >: <span id="cone2">0</span><br>
+    <: <span id="cone1">0</span><br>
+    ,: <span id="comma">0</span><br>
+    .: <span id="period">0</span><br>
+  </div>
+  <div class="keys" id="lowercaseLetters">
+    <b>Lowercase Letters</b><br>
+    a: <span id="a">0</span><br>
+    b: <span id="b">0</span><br>
+    c: <span id="c">0</span><br>
+    d: <span id="d">0</span><br>
+    e: <span id="e">0</span><br>
+    f: <span id="f">0</span><br>
+    g: <span id="g">0</span><br>
+    h: <span id="h">0</span><br>
+    i: <span id="i">0</span><br>
+    j: <span id="j">0</span><br>
+    k: <span id="k">0</span><br>
+    l: <span id="l">0</span><br>
+    m: <span id="m">0</span><br>
+    n: <span id="n">0</span><br>
+    o: <span id="o">0</span><br>
+    p: <span id="p">0</span><br>
+    q: <span id="q">0</span><br>
+    r: <span id="r">0</span><br>
+    s: <span id="s">0</span><br>
+    t: <span id="t">0</span><br>
+    u: <span id="u">0</span><br>
+    v: <span id="v">0</span><br>
+    w: <span id="w">0</span><br>
+    x: <span id="x">0</span><br>
+    y: <span id="y">0</span><br>
+    z: <span id="z">0</span><br>
+  </div>
+  <div class="keys" id="uppercaseLetters">
+    <b>Uppercase Letters</b><br>
+    A: <span id="ua">0</span><br>
+    B: <span id="ub">0</span><br>
+    C: <span id="uc">0</span><br>
+    D: <span id="ud">0</span><br>
+    E: <span id="ue">0</span><br>
+    F: <span id="uf">0</span><br>
+    G: <span id="ug">0</span><br>
+    H: <span id="uh">0</span><br>
+    I: <span id="ui">0</span><br>
+    J: <span id="uj">0</span><br>
+    K: <span id="uk">0</span><br>
+    L: <span id="ul">0</span><br>
+    M: <span id="um">0</span><br>
+    N: <span id="un">0</span><br>
+    O: <span id="uo">0</span><br>
+    P: <span id="up">0</span><br>
+    Q: <span id="uq">0</span><br>
+    R: <span id="ur">0</span><br>
+    S: <span id="us">0</span><br>
+    T: <span id="ut">0</span><br>
+    U: <span id="uu">0</span><br>
+    V: <span id="uv">0</span><br>
+    W: <span id="uw">0</span><br>
+    X: <span id="ux">0</span><br>
+    Y: <span id="uy">0</span><br>
+    Z: <span id="uz">0</span><br>
+  </div>
+</body>
+</html>
