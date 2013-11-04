@@ -1,0 +1,21 @@
+<html>
+<head>
+        <script type="text/javascript">
+        console.log("hello");
+        var body = document.body
+        var container = document.getElementById("key_pressed")
+        function getChar(event){
+            console.log(event.keyCode);
+        //     container.innerHTML += String.fromCharCode(event.keyCode);
+        // }
+
+        window.addEventListener("keydown", getChar(event), false);
+    </script>
+</head>
+    <body>
+        <div id="key_pressed">
+            Heyjkb
+        </div>
+    </body>
+
+</html>
