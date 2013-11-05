@@ -1,0 +1,46 @@
+<html>
+<head>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript">
+
+  var keystrokes = "";
+  var raw_text = "";
+
+  function keyCount(metakey, timestamp) {
+    keystrokes += metakey + " " + timestamp + "|";
+    raw_text += String.fromCharCode(metakey);
+  }
+
+  $(document).ready(function() {
+    $('#input-box').keypress(function (event) {
+      if ((event.which > 32)) {
+        keyCount(event.which, JSON.stringify(new Date().getTime()));
+      }
+    });
+
+    $('#input-box').keydown(function (event) {
+      if ((event.which <= 32)) {
+        keyCount(event.which, JSON.stringify(new Date().getTime()));
+      }
+    });
+  });
+  </script>
+
+</head>  
+<body>
+  <form method="POST", action="/bigrams">
+    <textarea id='input-box' name="text" cols=100 rows=20></textarea><br>
+    <input type="hidden" id="keystrokes" name="stroke" value="">
+    <input type="hidden" id="raw" name="rawtext" value="">
+    <input type="submit" id="button" value="Submit">
+  </form>
+
+  <script>
+    $('#button').click(function(event) {
+      $('#keystrokes').attr("value", JSON.stringify(keystrokes));
+      $('#raw').attr("value", JSON.stringify(raw_text));
+    });
+  </script>
+
+</body>
+</html>

@@ -1,12 +1,15 @@
 <html>
 <body>
-    Frequencies:<br> {{freq}}<br><br>
-    Key count:<br> {{count}}<br><br>
+    Raw input: {{raw_text}}<br>
+    Final input: {{text}}<br><br>
     Strokes:<br> {{strokes}}<br><br>
     Timestamp millisecond difference: <br>
     {% for i in timestamps %}
-        {{i.key}}: {{i.difference}}<br>
-    {% endfor %}<br>
+        {{i.key}}: {{i.difference}}
+        {% if not loop.last %}
+            |
+        {% endif %} 
+    {% endfor %}<br><br>
     Bigrams: <br>
     {% for i in bigrams %}
         {{i}}
